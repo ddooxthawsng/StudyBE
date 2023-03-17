@@ -1,7 +1,7 @@
 package service.impl;
 
 import entity.CustomUserDetails;
-import entity.User;
+import entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService  {
 
     @Override
     public UserDetails loadUserByUserName(String userName) {
-        User user = userRepo.findByUsername(userName);
+        UserEntity user = userRepo.findByUsername(userName);
         if(user == null){
             return null;
         }
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService  {
     @Override
     public UserDetails loadUserByUsername(String username) {
         // Kiểm tra xem user có tồn tại trong database không?
-        User user = userRepo.findByUsername(username);
+        UserEntity user = userRepo.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

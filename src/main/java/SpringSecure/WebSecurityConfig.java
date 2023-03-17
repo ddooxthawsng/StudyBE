@@ -1,5 +1,6 @@
 package SpringSecure;
 
+import entity.UserEntity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -7,13 +8,21 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import repository.impl.UserRepo;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    UserRepo userRepo;
+
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
+
+        UserEntity user = new UserEntity();
+        user.setUsername("THANGDO");
+        user.setPassword("123");
+        userRepo.save(user);
         // Tạo ra user trong bộ nhớ
         // lưu ý, chỉ sử dụng cách này để minh họa
         // Còn thực tế chúng ta sẽ kiểm tra user trong csdl
