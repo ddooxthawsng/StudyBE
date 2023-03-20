@@ -1,6 +1,6 @@
-package repository.impl;
+package LoginWithSpringSecurity.repository;
 
-import entity.UserEntity;
+import LoginWithSpringSecurity.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
